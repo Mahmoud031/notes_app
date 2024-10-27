@@ -8,17 +8,16 @@ part 'add_note_state.dart';
 
 class AddNoteCubit extends Cubit<AddNoteState> {
   AddNoteCubit() : super(AddNoteInitial());
- 
-  addNote(NoteModel note) async{
-    
+
+  addNote(NoteModel note) async {
     emit(AddNoteLoading());
     try {
-  var notesBox = Hive.box<NoteModel>(kNotesBox);
-  emit(AddNoteSuccess());
-     await notesBox.add(note);// only note can be add because i used NoteModel 
-}  catch (e) {
-  AddNoteFailure(e.toString());
-}
+      var notesBox = Hive.box<NoteModel>(kNotesBox);
 
+      await notesBox.add(note); // only note can be add because i used NoteModel
+      emit(AddNoteSuccess());
+    } catch (e) {
+       emit(AddNoteFailure(e.toString()));
+    }
   }
 }
