@@ -5,13 +5,13 @@ part 'note_model.g.dart'; //the name must be the same of the file name
 @HiveType(typeId: 0) //unique of the same class
 class NoteModel extends HiveObject {
   @HiveField(0)
-  final String title;
+   String title;
   @HiveField(1)
-  final String subtitle;
-  @HiveField(3)
+   String subtitle;
+  @HiveField(2)
   final String date;
-  @HiveField(4)
-  final int color;
+  @HiveField(3)
+   int color;
 
   NoteModel(
       {required this.title,
